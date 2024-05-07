@@ -1,0 +1,94 @@
+<!--dash.component.html-->
+<div *ngFor="let item of itemDataset | keyvalue" class="grid-container">
+  <h1 class="mat-h1">{{item.key}}</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+
+    <mat-grid-tile *ngFor="let dataset of item.value" [colspan]="( cardLayout | async )?.chart!.cols"
+      [rowspan]="( cardLayout | async )?.chart!.rows">
+      <app-card *ngIf="!dataset.dataLoaded" title="Loading...">
+        <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+            <mat-spinner color="accent" diameter="50"></mat-spinner>
+        </div>
+    </app-card>
+    
+    <app-card *ngIf="dataset.dataLoaded" [title]="dataset.title">
+        <app-line-chart [dataset]="dataset"></app-line-chart>
+    </app-card>
+    </mat-grid-tile>
+  </mat-grid-list> 
+  <mat-divider></mat-divider>
+ </div>
+
+ <!-- <div  class="grid-container">
+  <h1 class="mat-h1">item 1</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+
+    <mat-grid-tile  [colspan]="( cardLayout | async )?.chart!.cols"
+      [rowspan]="( cardLayout | async )?.chart!.rows">
+      <app-card title="chart">
+        <app-line-chart [dataset]="dataset[0]"></app-line-chart>
+      </app-card>
+    </mat-grid-tile>
+    
+  </mat-grid-list> 
+ </div> -->
+
+<!-- <div  class="grid-container">
+  <h1 class="mat-h1">item 1</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+
+    <mat-grid-tile *ngFor="let item of itemDataset['item 1']" [colspan]="( cardLayout | async )?.chart!.cols"
+      [rowspan]="( cardLayout | async )?.chart!.rows">
+      <app-card title="{{item.title}}">
+        <app-line-chart [dataset]="item"></app-line-chart>
+      </app-card>
+    </mat-grid-tile>
+    
+  </mat-grid-list> 
+ </div>
+
+ <div  class="grid-container">
+  <h1 class="mat-h1">item 2</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+
+    <mat-grid-tile *ngFor="let item of itemDataset['item 2']" [colspan]="( cardLayout | async )?.chart!.cols"
+      [rowspan]="( cardLayout | async )?.chart!.rows">
+      <app-card title="{{item.title}}">
+        <app-line-chart [dataset]="item"></app-line-chart>
+      </app-card>
+    </mat-grid-tile>
+    
+  </mat-grid-list> 
+ </div>
+
+
+ <div  class="grid-container">
+  <h1 class="mat-h1">item 3</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+
+    <mat-grid-tile *ngFor="let item of itemDataset['item 3']" [colspan]="( cardLayout | async )?.chart!.cols"
+      [rowspan]="( cardLayout | async )?.chart!.rows">
+      <app-card title="{{item.title}}">
+        <app-line-chart [dataset]="item"></app-line-chart>
+      </app-card>
+    </mat-grid-tile>
+    
+  </mat-grid-list> 
+ </div> -->
+
+
+
+
+
+     <!-- Mini Cards
+    <mat-grid-tile *ngFor="let i of [1, 2, 3, 4]" [colspan]="( cardLayout | async )?.miniCard!.cols"
+      [rowspan]="( cardLayout | async )?.miniCard!.rows">
+      <app-card title="Card {{i}}"><div>Mini Card Content Here</div></app-card>
+    </mat-grid-tile> -->
+    <!--Charts-->
+
+
+        <!-- Table
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table!.cols" [rowspan]="( cardLayout | async )?.table!.rows">
+      <app-card title="Card 9"><div>Table Content Here</div></app-card>
+    </mat-grid-tile> -->
